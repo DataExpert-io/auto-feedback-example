@@ -37,7 +37,7 @@ def get_feedback(filename: str, system_prompt: str, user_prompt: str) -> str:
           {"role": "system", "content": system_prompt},
           {"role": "user", "content": user_prompt},
       ],
-      temperature=0,
+      temperature=0.2
   )
   comment = response.choices[0].message.content
   text = f"This is a LLM-generated comment for `{filename}`: \n{comment if comment else 'Tests passed. No feedback generated for testing purposes.'}"
@@ -67,7 +67,6 @@ def main(files_to_process: list):
   os.makedirs(local_solutions_dir, exist_ok=True)
   system_prompt = """
     You are a senior software engineer looking to give feedback on every PR you see in this repo
-  
   """
 
   for filename in files_to_process:
