@@ -37,7 +37,7 @@ def get_feedback(filename: str, system_prompt: str, user_prompt: str) -> str:
           {"role": "system", "content": system_prompt},
           {"role": "user", "content": user_prompt},
       ],
-      temperature=0,
+      temperature=0.2,
   )
   comment = response.choices[0].message.content
   text = f"This is a LLM-generated comment for `{filename}`: \n{comment if comment else 'Tests passed. No feedback generated for testing purposes.'}"
